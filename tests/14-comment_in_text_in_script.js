@@ -49,8 +49,8 @@ exports.expected =
        , data: ' the text'
        , type: 'text'
        }
-
      ]
+  , closed: true
   }
 ];
 

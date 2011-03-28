@@ -43,6 +43,7 @@ exports.expected =
        , type: 'text'
        }
      ]
+  , closed: true
   }
 ];
 

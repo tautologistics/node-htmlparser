@@ -42,6 +42,7 @@ exports.expected =
 		       , type: 'tag'
 		       , name: 'title'
 		       , children: [ { raw: 'The Title', data: 'The Title', type: 'text' } ]
+		       , closed: true
 		       }
 		     , { raw: 'body'
 		       , data: 'body'
@@ -53,8 +54,10 @@ exports.expected =
 		            , type: 'text'
 		            }
 		          ]
+		       , closed: true
 		       }
 		     ]
+		  , closed: true
 		  }
 		];
 
