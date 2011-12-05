@@ -24,7 +24,7 @@ View runtests.html in any browser
 	});
 	var parser = new htmlparser.Parser(handler);
 	parser.parseComplete(rawHtml);
-	sys.puts(sys.inspect(handler.dom, false, null));
+	util.puts(util.inspect(handler.dom, false, null));
 
 ##Usage In Browser
 	var handler = new Tautologistics.NodeHtmlParser.DefaultHandler(function (error, dom) {
