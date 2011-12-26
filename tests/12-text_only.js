@@ -22,6 +22,10 @@ if (!runningInCommonJSEnv()) {
 }
 
 exports.name = "Only text";
+exports.options = {
+	  handler: {}
+	, parser: {}
+};
 exports.html = "this is the text";
 exports.expected =
 [ { raw: 'this is the text'

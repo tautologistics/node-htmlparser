@@ -22,6 +22,10 @@ if (!runningInCommonJSEnv()) {
 }
 
 exports.name = "Script source in comment";
+exports.options = {
+	  handler: {}
+	, parser: {}
+};
 exports.html = "<script><!--var foo = 1;--></script>";
 exports.expected =
 [ { raw: 'script'

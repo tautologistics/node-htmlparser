@@ -22,6 +22,10 @@ if (!runningInCommonJSEnv()) {
 }
 
 exports.name = "Extra spaces in tag";
+exports.options = {
+	  handler: {}
+	, parser: {}
+};
 exports.html = "<\n font	\n size='14' \n>the text<\n /	\nfont	 \n>";
 exports.expected =
 [ { raw: '\n font	\n size=\'14\' \n'
