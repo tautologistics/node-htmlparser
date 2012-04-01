@@ -1,6 +1,6 @@
 //node --prof --prof_auto profile.js
 //deps/v8/tools/mac-tick-processor v8.log
-var sys = require("sys");
+var util = require("util");
 var fs = require("fs");
 var http = require("http");
 var htmlparser = require("./lib/htmlparser");
@@ -39,7 +39,7 @@ http.createClient(testPort, testHost)
 				var timeNodeHtmlParser = !testNHP ? 0 : timeExecutions(testIterations, function () {
 					var handler = new htmlparser.DefaultHandler(function(err, dom) {
 						if (err)
-							sys.debug("Error: " + err);
+							util.debug("Error: " + err);
 					});
 					var parser = new htmlparser.Parser(handler, { includeLocation: true });
 					parser.parseComplete(html);
@@ -50,14 +50,14 @@ http.createClient(testPort, testHost)
 				})
 
 				if (testNHP)
-					sys.debug("NodeHtmlParser: "  + timeNodeHtmlParser);
+					util.debug("NodeHtmlParser: "  + timeNodeHtmlParser);
 				if (testLXJS)
-					sys.debug("LibXmlJs: "  + timeLibXmlJs);
+					util.debug("LibXmlJs: "  + timeLibXmlJs);
 				if (testNHP && testLXJS)
-					sys.debug("Difference: " + ((timeNodeHtmlParser - timeLibXmlJs) / timeLibXmlJs) * 100);
+					util.debug("Difference: " + ((timeNodeHtmlParser - timeLibXmlJs) / timeLibXmlJs) * 100);
 			});
 		}
 		else
-			sys.debug("Error: got response status " + response.statusCode);
+			util.debug("Error: got response status " + response.statusCode);
 	})
 	.end();
