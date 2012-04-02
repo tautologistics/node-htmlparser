@@ -1,20 +1,16 @@
 (function () {
 
-function RunningInNode () {
+function runningInCommonJSEnv () {
 	return(
 		(typeof require) == "function"
 		&&
 		(typeof exports) == "object"
 		&&
 		(typeof module) == "object"
-		&&
-		(typeof __filename) == "string"
-		&&
-		(typeof __dirname) == "string"
 		);
 }
 
-if (!RunningInNode()) {
+if (!runningInCommonJSEnv()) {
 	if (!this.Tautologistics)
 		this.Tautologistics = {};
 	if (!this.Tautologistics.NodeHtmlParser)

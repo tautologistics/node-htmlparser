@@ -10,6 +10,9 @@ A forgiving HTML/XML/RSS parser written in JS for both the browser and NodeJS (y
 ###Run tests under node:
 	node runtests.js
 
+###Run tests under node using RequireJS:
+        node r.js runtests.js
+
 ###Run tests in browser:
 View runtests.html in any browser
 
