@@ -35,5 +35,5 @@ exports.expected =
 	[ { raw: 'br', data: 'br', type: 'tag', name: 'br' }
 	, { raw: 'text', data: 'text', type: 'text' }
 	];
-
+exports.expectedHtml = "<br>text";
 })();

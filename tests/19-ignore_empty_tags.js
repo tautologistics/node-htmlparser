@@ -35,7 +35,7 @@ exports.expected =
 	[
 		  { raw: 'link', data: 'link', type: 'tag', name: 'link', children: [
 		  	{ raw: 'text', data: 'text', type: 'text' }
-		  ] }
+		  ], closed: true }
 	];
 
 })();

@@ -66,7 +66,8 @@ exports.expected = [
 					line: 3,
 					col: 9
 				}
-			}]
+			}],
+			closed: true
 		}, {
 			raw: 'body',
 			data: 'body',
@@ -84,7 +85,8 @@ exports.expected = [
 					line: 3,
 					col: 32
 				}
-			}]
+			}],
+			closed: true
 		}, {
 			raw: '\n\n',
 			data: '\n\n',
@@ -93,7 +95,8 @@ exports.expected = [
 				line: 6,
 				col: 8
 			}
-		}]
+		}],
+		closed: true
 	}
 	];
 

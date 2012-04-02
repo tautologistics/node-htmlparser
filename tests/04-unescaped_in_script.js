@@ -48,8 +48,10 @@ exports.expected =
             , type: 'text'
             }
           ]
+        , closed: true
        }
      ]
+  , closed: true
   }
 ];
 

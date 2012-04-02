@@ -22,6 +22,7 @@ IN THE SOFTWARE.
 var sys = require("sys");
 var fs = require("fs");
 var htmlparser = require("./lib/htmlparser");
+var domutils = require("./lib/htmlparser").DomUtils;
 
 var testFolder = "./tests";
 var chunkSize = 5;
@@ -58,17 +59,33 @@ for (var i in testFiles) {
 	var testResult =
 		sys.inspect(resultComplete, false, null) === sys.inspect(test.expected, false, null)
 		&&
-		sys.inspect(resultChunk, false, null) === sys.inspect(test.expected, false, null)
-		;
+		sys.inspect(resultChunk, false, null) === sys.inspect(test.expected, false, null);
+	if (test.type != 'rss') {
+	    testResult = testResult
+		    &&
+		    domutils.toHtml(resultComplete) == (test.expectedHtml ? test.expectedHtml : test.html)
+		    &&
+		    domutils.toHtml(resultChunk) == (test.expectedHtml ? test.expectedHtml : test.html)
+		    ;
+    }
 	sys.puts("[" + test.name + "\]: " + (testResult ? "passed" : "FAILED"));
 	if (!testResult) {
 		failedCount++;
 		sys.puts("== Complete ==");
 		sys.puts(sys.inspect(resultComplete, false, null));
+	    if (test.type != 'rss') {
+		    sys.puts(domutils.toHtml(resultComplete));
+	    }
 		sys.puts("== Chunked ==");
 		sys.puts(sys.inspect(resultChunk, false, null));
+	    if (test.type != 'rss') {
+		    sys.puts(domutils.toHtml(resultChunk));
+	    }
 		sys.puts("== Expected ==");
 		sys.puts(sys.inspect(test.expected, false, null));
+	    if (test.type != 'rss') {
+		    sys.puts(test.expectedHtml ? test.expectedHtml : test.html);
+	    }
 	}
 }
 sys.puts("Total tests: " + testCount);

@@ -65,7 +65,9 @@ exports.expected =
   , type: 'text'
   }
 	  ]
+  , closed: true
 	}
 ];
+exports.expectedHtml = "Line one\n<br><br>\nline two<font><br> x </font>";
 
 })();

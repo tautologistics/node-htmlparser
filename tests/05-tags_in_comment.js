@@ -42,6 +42,7 @@ exports.expected =
        , type: 'comment'
        }
      ]
+  , closed: true
   }
 ];
 

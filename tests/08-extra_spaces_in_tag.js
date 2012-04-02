@@ -43,7 +43,9 @@ exports.expected =
        , type: 'text'
        }
      ]
+   , closed: true
   }
 ];
+exports.expectedHtml = "<font	\n size='14'>the text</font>";
 
 })();
