@@ -368,8 +368,12 @@ exports['html inside comment'] = {
 };
 
 exports['transitional doctype'] = {
-    data: ['<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">']
-    , expected: [{ type: 'doctype', data: ' HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"'}]
+    data: ['<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html></html>']
+    , expected: [
+        { type: 'doctype', data: ' HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"'},
+        { type: 'tag', name: 'html', raw: 'html' },
+        { type: 'tag', name: '/html', raw: '/html' }
+        ]
 };
 
 exports['html inside cdata'] = {
