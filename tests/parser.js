@@ -367,6 +367,11 @@ exports['html inside comment'] = {
     , expected: [{ type: 'comment', data: ' <div>foo</div> '}]
 };
 
+exports['transitional doctype'] = {
+    data: ['<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">']
+    , expected: [{ type: 'doctype', data: ' HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"'}]
+};
+
 exports['html inside cdata'] = {
     data: ['<![CDATA[ <div>foo</div> ]]>']
     , expected: [{ type: 'cdata', data: ' <div>foo</div> '}]
