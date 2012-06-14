@@ -39,7 +39,8 @@ exports.expected = [
 		name: 'html',
 		location: {
 			line: 1,
-			col: 1
+			col: 1,
+			character: 0
 		},
 		children: [{
 			raw: '\r\n\n\t',
@@ -47,7 +48,8 @@ exports.expected = [
 			type: 'text',
 			location: {
 				line: 1,
-				col: 7
+				col: 7,
+				character: 6
 			}
 		}, {
 			raw: 'title',
@@ -56,7 +58,8 @@ exports.expected = [
 			name: 'title',
 			location: {
 				line: 3,
-				col: 2
+				col: 2,
+				character: 10,
 			},
 			children: [{
 				raw: 'The Title',
@@ -64,7 +67,8 @@ exports.expected = [
 				type: 'text',
 				location: {
 					line: 3,
-					col: 9
+					col: 9,
+					character: 17
 				}
 			}]
 		}, {
@@ -74,7 +78,8 @@ exports.expected = [
 			name: 'body',
 			location: {
 				line: 3,
-				col: 26
+				col: 26,
+				character: 34,
 			},
 			children: [{
 				raw: '\nHello world\r\n\n',
@@ -82,7 +87,8 @@ exports.expected = [
 				type: 'text',
 				location: {
 					line: 3,
-					col: 32
+					col: 32,
+					character: 40,
 				}
 			}]
 		}, {
@@ -91,7 +97,8 @@ exports.expected = [
 			type: 'text',
 			location: {
 				line: 6,
-				col: 8
+				col: 8,
+				character: 62
 			}
 		}]
 	}
