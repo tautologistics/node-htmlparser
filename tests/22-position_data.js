@@ -30,7 +30,7 @@ exports.options = {
 	  handler: {}
 	, parser: { includeLocation: true }
 };
-exports.html = "<html>\r\n\n\t<title>The Title</title><body>\nHello world\r\n\n</body>\n\n</html>";
+exports.html = "<html>\r\n\n\t<title>The Title</title><body>\nHello world\r\n\n</body>\n\n<script src=\"test.js\"></script><script>var test = true;</script></html>";
 exports.expected = [
 	{
 		raw: 'html',
@@ -100,8 +100,41 @@ exports.expected = [
 				col: 8,
 				character: 62
 			}
+		}, {
+			raw: 'script src="test.js"',
+			data: 'script src="test.js"',
+			type: 'script',
+			name: 'script',
+			location: {
+				line: 8,
+				col: 1,
+				character: 64
+			},
+			attribs: { 
+				src: 'test.js' 
+			} 
+		}, {
+			raw: 'script',
+			data: 'script',
+			type: 'script',
+			name: 'script',
+			location: {
+				line: 8,
+				col: 32,
+				character: 95
+			},
+			children: [
+				{
+					raw: 'var test = true;',
+					data: 'var test = true;',
+					type: 'text',
+					location: {
+						line: 8,
+						col: 40,
+						character: 103
+					}
+				}
+			]
 		}]
-	}
-	];
-
+	}];
 })();
