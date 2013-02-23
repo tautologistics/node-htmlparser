@@ -76,6 +76,12 @@ while (...) {
 parser.done();	
 ```
 
+##Streaming To Parser in Node
+
+```javascript
+fs.createReadStream('./path_to_file.html').pipe(parser);
+```
+
 ##Parsing RSS/Atom Feeds
 
 ```javascript
