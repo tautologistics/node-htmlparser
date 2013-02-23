@@ -192,4 +192,46 @@ exports.runParserTests = function (tests, parserCtor, permutator, testHandler, r
     resultsHandler(endTime - startTime, passed, failed);
 }
 
+exports.runStreamingParserTests = function (tests, parserCtor, permutator, testHandler, resultsHandler) {
+    var callback = function builderCallback (err) {
+        if (err) {
+            console.log('Builder error', err);
+        }
+    };
+    var builder = new TestBuilder(callback);
+    var parser = new parserCtor(builder);
+
+    var passed = 0;
+    var failed = 0;
+
+    var startTime = Date.now();
+    for (var testName in tests) {
+        if (!tests.hasOwnProperty(testName)) {
+            continue;
+        }
+        var test = permutator ? permutator(tests[testName]) : tests[testName];
+        parser.reset();
+        if (test.data.length === 1) {
+            parser.end(test.data[0]);
+        } else {
+            for (var i = 0, len = test.data.length; i < len; i++) {
+                parser.write(test.data[i]);
+            }
+            parser.end();
+        }
+
+        var testResult = exports.compareObjects(builder.output, test.expected);
+        testHandler(testName, testResult, builder.dom, test.expected);
+
+        if (!testResult) {
+            failed++;
+        } else {
+            passed++;
+        }
+    }
+    var endTime = Date.now();
+
+    resultsHandler(endTime - startTime, passed, failed);
+}
+
 })();
