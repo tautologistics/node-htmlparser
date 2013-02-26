@@ -30,9 +30,12 @@ var testFiles = fs.readdirSync(testFolder);
 var testCount = 0;
 var failedCount = 0;
 for (var i in testFiles) {
-	testCount++;
 	var fileParts = testFiles[i].split(".");
-	fileParts.pop();
+	var ext = fileParts.pop();
+	if ('js' != ext) {
+		continue;
+	}
+	testCount++;
 	var moduleName = fileParts.join(".");
 	var test = require(testFolder + "/" + moduleName);
 	var handlerCallback = function handlerCallback (error) {
