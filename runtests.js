@@ -24,15 +24,18 @@ var fs = require("fs");
 var htmlparser = require("./lib/htmlparser");
 
 var testFolder = "./tests";
-var chunkSize = 5;
+var defaultChunkSize = 5;
 
 var testFiles = fs.readdirSync(testFolder);
 var testCount = 0;
 var failedCount = 0;
 for (var i in testFiles) {
-	testCount++;
 	var fileParts = testFiles[i].split(".");
-	fileParts.pop();
+	var ext = fileParts.pop();
+	if ('js' != ext) {
+		continue;
+	}
+	testCount++;
 	var moduleName = fileParts.join(".");
 	var test = require(testFolder + "/" + moduleName);
 	var handlerCallback = function handlerCallback (error) {
@@ -48,6 +51,7 @@ for (var i in testFiles) {
 	parser.parseComplete(test.html);
 	var resultComplete = handler.dom;
 	var chunkPos = 0;
+	var chunkSize = test.chunkSize || defaultChunkSize;
 	parser.reset();
 	while (chunkPos < test.html.length) {
 		parser.parseChunk(test.html.substring(chunkPos, chunkPos + chunkSize));
