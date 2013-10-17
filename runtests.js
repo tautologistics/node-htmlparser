@@ -204,6 +204,47 @@ testUtils.runParserTests(
             };
     });
 
+testUtils.runStreamingParserTests(
+      parserTests
+    , htmlparser.Parser
+    , null
+    , function (testName, testResult, actual, expected) {
+        console.log("[" + testName + "]: " + (testResult ? "passed" : "FAILED"));
+    }, function (elapsed, passed, failed) {
+        testResults['StreamingParser'] = {
+              elapsed: elapsed
+            , passed: passed
+            , failed: failed
+            };
+    });
+
+testUtils.runStreamingParserTests(
+      parserTests
+    , htmlparser.Parser
+    , function (test) {
+        var newTest = {};
+        for (var key in test) {
+            if (!test.hasOwnProperty(key)) {
+                continue;
+            }
+            newTest[key] = (key === 'data') ?
+                test.data.join('').split('')
+                :
+                test[key]
+                ;
+        }
+        return newTest;
+    }
+    , function (testName, testResult, actual, expected) {
+        console.log("[" + testName + "]: " + (testResult ? "passed" : "FAILED"));
+    }, function (elapsed, passed, failed) {
+        testResults['StreamingParser (streamed)'] = {
+              elapsed: elapsed
+            , passed: passed
+            , failed: failed
+            };
+    });
+
 console.log('');
 console.log('Test Results');
 console.log('------------------');
