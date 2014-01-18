@@ -1,0 +1,15 @@
+{
+  "name": "node-htmlparser",
+  "version": "2.0.0",
+  "homepage": "http://github.com/tautologistics/node-htmlparser",
+  "authors": [
+    "Chris Winberry <chris@winberry.net>"
+  ],
+  "description": "Forgiving HTML/XML/RSS Parser in JS for *both* Node and Browsers",
+  "main": "lib/htmlparser.js",
+  "keywords": [
+    "html",
+    "xml"
+  ],
+  "license": "MIT"
+}
