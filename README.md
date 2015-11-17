@@ -17,6 +17,7 @@ View runtests.html in any browser
 
 ```javascript
 var htmlparser = require("htmlparser");
+var sys = require("sys")
 var rawHtml = "Xyz <script language= javascript>var foo = '<<bar>>';< /  script><!--<!-- Waah! -- -->";
 var handler = new htmlparser.DefaultHandler(function (error, dom) {
 	if (error)
