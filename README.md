@@ -16,7 +16,7 @@ View runtests.html in any browser
 ##Usage In Node
 
 ```javascript
-var htmlparser = require("htmlparser");
+var htmlparser = require("node-htmlparser");
 var rawHtml = "Xyz <script language= javascript>var foo = '<<bar>>';< /  script><!--<!-- Waah! -- -->";
 var handler = new htmlparser.DefaultHandler(function (error, dom) {
 	if (error)
